@@ -24,3 +24,66 @@ It removes repetitive boilerplate such as async error handling, response formatt
 
 ```bash
 npm install apixora
+```
+
+---
+
+## 🚀 Quick Start (Express)
+
+```javascript
+import express from "express";
+import {
+  success,
+  asyncHandler,
+  errorHandler,
+  requestId,
+  logger,
+} from "apixora";
+
+const app = express();
+
+app.use(requestId);
+app.use(logger);
+
+app.get(
+  "/",
+  asyncHandler(async (req, res) => {
+    success(res, { name: "apixora" }, "API running");
+  }),
+);
+
+app.use(errorHandler);
+
+app.listen(3000, () => {
+  console.log("Server running on port 3000");
+});
+```
+
+---
+
+## 🚀 Usage Example (Express)
+
+```javascript
+import express from "express";
+import {
+  success,
+  asyncHandler,
+  errorHandler,
+  requestId,
+  logger,
+} from "apixora";
+
+const app = express();
+
+app.use(requestId);
+app.use(logger);
+
+app.get(
+  "/",
+  asyncHandler(async (req, res) => {
+    success(res, { app: "apixora" });
+  }),
+);
+
+app.use(errorHandler);
+```
